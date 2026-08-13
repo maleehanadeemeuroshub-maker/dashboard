@@ -1,7 +1,9 @@
 :root{
-  --board:#182922; --board2:#1F362D; --board3:#2A473B; --line:#375A4C;
-  --chalk:#F2EFE2; --chalkdim:#A9BBAE;
-  --yellow:#F2C14E; --pink:#E8779A; --blue:#6FA8DC; --coral:#E2725B; --green:#7BC896;
+  --board:#120C1F; --board2:#1C1530; --board3:#2F2554; --line:#251C3F;
+  --chalk:#F4F1FB; --chalkdim:#9C93BD;
+  --yellow:#F0B429; --pink:#EC5FA7; --blue:#6F8FF7; --coral:#F0714E; --green:#5FD68F;
+  --purple:#9B6BFF;
+  --grad-brand: linear-gradient(135deg, var(--purple), var(--pink));
 }
 html,body{ background:var(--board); color:var(--chalk); }
 body{ font-family:'Inter',sans-serif; }
@@ -58,7 +60,10 @@ ul{ list-style:none; margin:0; padding:0; }
   transition: background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease;
 }
 .binder-tab:hover{ background:var(--board3); color:var(--chalk); transform:translateX(2px); }
-.binder-tab.is-active{ background:var(--board3); color:var(--chalk); border-left-color:var(--tab-color, var(--yellow)); }
+.binder-tab.is-active{
+  background: var(--grad-brand); color:#fff; border-left-color:transparent;
+  box-shadow: 0 6px 16px -8px rgba(155,107,255,.55);
+}
 
 /* ---- stat cards ---- */
 .stat-card{
@@ -198,7 +203,7 @@ ul{ list-style:none; margin:0; padding:0; }
   border-radius:6px; padding:8px 10px; font-size:14px; font-family:'Inter',sans-serif;
   transition: border-color .15s ease, box-shadow .15s ease;
 }
-.field input:focus, .field select:focus{ outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(111,168,220,.2); }
+.field input:focus, .field select:focus{ outline:none; border-color:var(--purple); box-shadow:0 0 0 3px rgba(155,107,255,.2); }
 .field__error{ display:none; color:var(--coral); font-size:11.5px; margin-top:5px; }
 .field input:invalid:not(:placeholder-shown) ~ .field__error,
 .field select:invalid ~ .field__error{ display:block; }
@@ -206,17 +211,17 @@ ul{ list-style:none; margin:0; padding:0; }
 .field select:invalid{ border-color:var(--coral); box-shadow:0 0 0 3px rgba(226,114,91,.15); }
 
 .btn-add{
-  background:var(--yellow); color:var(--board); font-family:'Baloo 2',sans-serif; font-weight:600;
+  background:var(--grad-brand); color:#fff; font-family:'Baloo 2',sans-serif; font-weight:600;
   font-size:13.5px; padding:11px 16px; border-radius:6px; transition: transform .15s ease, box-shadow .15s ease;
 }
-.btn-add:hover{ transform:translateY(-1px); box-shadow:0 8px 18px -8px rgba(242,193,78,.5); }
+.btn-add:hover{ transform:translateY(-1px); box-shadow:0 8px 18px -8px rgba(155,107,255,.5); }
 .btn-add:active{ transform:translateY(0) scale(.99); }
 
 /* scrollbar */
 ::-webkit-scrollbar{ width:8px; height:8px; }
 ::-webkit-scrollbar-thumb{ background:var(--board3); border-radius:4px; }
 
-:focus-visible{ outline:2px solid var(--blue); outline-offset:2px; }
+:focus-visible{ outline:2px solid var(--purple); outline-offset:2px; }
 
 @media (prefers-reduced-motion: reduce){
   *, *::before, *::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
@@ -235,11 +240,13 @@ ul{ list-style:none; margin:0; padding:0; }
    reassigned so every existing component repaints for free.
    ========================================================= */
 :root[data-theme="light"]{
-  --board:#F3F0E7; --board2:#FFFFFF; --board3:#E2DECE; --line:#EDE9DC;
-  --chalk:#20302A; --chalkdim:#6B7A70;
+  --board:#F6F3FC; --board2:#FFFFFF; --board3:#E7E0F7; --line:#EFE9FA;
+  --chalk:#221B3D; --chalkdim:#6C6390;
+  --yellow:#D98F1E; --pink:#D5488F; --blue:#4C6FE0; --coral:#D65A3C; --green:#3FAE71;
+  --purple:#7C3AED;
 }
 :root[data-theme="light"] .stat-card,
-:root[data-theme="light"] .course-card{ box-shadow:0 1px 2px rgba(32,48,42,.05); }
+:root[data-theme="light"] .course-card{ box-shadow:0 1px 2px rgba(34,27,61,.06); }
 :root[data-theme="light"] .btn-add{ box-shadow:none; }
 
 .theme-toggle{
@@ -247,7 +254,7 @@ ul{ list-style:none; margin:0; padding:0; }
   background:var(--board2); border:1px solid var(--board3); color:var(--chalk); cursor:pointer;
   transition: border-color .15s ease, transform .15s ease;
 }
-.theme-toggle:hover{ border-color:var(--yellow); transform:translateY(-1px); }
+.theme-toggle:hover{ border-color:var(--purple); transform:translateY(-1px); }
 .theme-toggle .icon-moon{ display:none; }
 :root[data-theme="light"] .theme-toggle .icon-sun{ display:none; }
 :root[data-theme="light"] .theme-toggle .icon-moon{ display:block; }
@@ -260,7 +267,7 @@ ul{ list-style:none; margin:0; padding:0; }
   background:var(--board2); border:1px solid var(--board3); color:var(--chalk); cursor:pointer;
   transition: border-color .15s ease, transform .15s ease;
 }
-.icon-btn:hover{ border-color:var(--blue); transform:translateY(-1px); }
+.icon-btn:hover{ border-color:var(--purple); transform:translateY(-1px); }
 .icon-btn__dot{
   position:absolute; top:1px; right:1px; width:9px; height:9px; border-radius:50%;
   background:var(--coral); border:2px solid var(--board2);
@@ -307,7 +314,7 @@ ul{ list-style:none; margin:0; padding:0; }
   width:100%; background:var(--board); border:1px solid var(--board3); color:var(--chalk);
   border-radius:6px; padding:8px 10px; font-size:13px; font-family:'Inter',sans-serif; resize:vertical; min-height:64px;
 }
-.modal .field textarea:focus{ outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(111,168,220,.2); }
+.modal .field textarea:focus{ outline:none; border-color:var(--purple); box-shadow:0 0 0 3px rgba(155,107,255,.2); }
 .modal-actions{ display:flex; gap:8px; margin-top:16px; }
 .btn-ghost{
   flex:1; background:transparent; border:1px solid var(--board3); color:var(--chalk); font-family:'Baloo 2',sans-serif;
@@ -456,4 +463,471 @@ html, body{ overflow-x: hidden; max-width: 100vw; }
 @media (max-width: 380px){
   main{ padding-left: 14px !important; padding-right: 14px !important; }
   header{ padding-left: 14px !important; padding-right: 14px !important; }
+}
+
+/* =========================================================
+   GRACEFUL MOTION LAYER
+   A second pass of animation focused on elegance: a single
+   shared easing signature, gentle overshoot on entrances,
+   soft light on hover instead of hard shadow jumps, and
+   small delight details (icon wiggles, shimmer, glow) that
+   don't fight the calm chalkboard mood of the rest of the UI.
+   ========================================================= */
+:root{
+  --ease-grace: cubic-bezier(.22,.9,.3,1);      /* smooth deceleration, faint overshoot */
+  --ease-soft:  cubic-bezier(.4,0,.2,1);         /* calm, standard material-ish ease */
+  --ease-pop:   cubic-bezier(.34,1.56,.64,1);    /* springy, for tiny confirmations */
+}
+
+/* theme switch: let color values glide instead of snapping */
+html{ transition: background-color .45s var(--ease-soft); }
+body, .stat-card, .course-card, .hw-item, .grades-row, .week-item, .modal,
+.reminder-panel, .icon-btn, .theme-toggle, .task-form, .cal-day, .binder-tab,
+.filter-chip, .btn-ghost, .btn-add, .field input, .field select, .field textarea{
+  transition-property: background-color, border-color, color, box-shadow, transform;
+  transition-duration: .35s;
+  transition-timing-function: var(--ease-soft);
+}
+
+/* ---- entrance choreography, refined + extended ---- */
+@keyframes riseInGrace{
+  from{ opacity:0; transform:translateY(14px) scale(.985); }
+  60%{ opacity:1; }
+  to{ opacity:1; transform:translateY(0) scale(1); }
+}
+.rise{ animation-name: riseInGrace; animation-duration:.6s; animation-timing-function: var(--ease-grace); }
+.rise:nth-child(6){animation-delay:.32s;} .rise:nth-child(7){animation-delay:.38s;}
+.rise:nth-child(8){animation-delay:.44s;}
+
+/* stat cards, course cards, week items and grade rows get their own
+   gentle stagger even where no .rise class is present */
+.stat-card, .course-card, .week-item, .grades-row:not(.grades-row--head), .cal-day{
+  animation: riseInGrace .55s var(--ease-grace) both;
+}
+.stat-card:nth-child(1), .course-card:nth-child(1){ animation-delay:.03s; }
+.stat-card:nth-child(2), .course-card:nth-child(2){ animation-delay:.08s; }
+.stat-card:nth-child(3), .course-card:nth-child(3){ animation-delay:.13s; }
+.stat-card:nth-child(4), .course-card:nth-child(4){ animation-delay:.18s; }
+.course-card:nth-child(n+5){ animation-delay:.22s; }
+.cal-day:nth-child(1){animation-delay:.02s;} .cal-day:nth-child(2){animation-delay:.06s;}
+.cal-day:nth-child(3){animation-delay:.10s;} .cal-day:nth-child(4){animation-delay:.14s;}
+.cal-day:nth-child(5){animation-delay:.18s;} .cal-day:nth-child(6){animation-delay:.22s;}
+.cal-day:nth-child(7){animation-delay:.26s;}
+.grades-row:not(.grades-row--head):nth-of-type(1){animation-delay:.03s;}
+.grades-row:not(.grades-row--head):nth-of-type(2){animation-delay:.08s;}
+.grades-row:not(.grades-row--head):nth-of-type(3){animation-delay:.13s;}
+.grades-row:not(.grades-row--head):nth-of-type(4){animation-delay:.18s;}
+.grades-row:not(.grades-row--head):nth-of-type(5){animation-delay:.23s;}
+
+/* ---- softer, more graceful hover lift for cards ---- */
+.stat-card, .course-card{
+  transition-property: transform, box-shadow, border-color, background-color;
+  transition-duration: .4s;
+  transition-timing-function: var(--ease-grace);
+}
+.stat-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 18px 30px -16px rgba(0,0,0,.45), 0 0 0 1px var(--board3) inset;
+}
+.course-card:hover{
+  transform: translateY(-5px) scale(1.008);
+  box-shadow: 0 20px 34px -14px rgba(0,0,0,.5);
+}
+.stat-num{ transition: color .3s var(--ease-soft); }
+.stat-card:hover .stat-num{ color: var(--accent, var(--blue)); }
+
+/* ---- progress bars: soft shimmer sweep while they're "live" ---- */
+@keyframes shimmerSweep{
+  0%{ background-position: -120px 0; }
+  100%{ background-position: 220px 0; }
+}
+.progress-chalk__bar{
+  transition: width .8s var(--ease-grace);
+  background-image: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+  background-size: 80px 100%;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  animation: shimmerSweep 2.6s ease-in-out .4s 1;
+}
+
+/* ---- ruler: gentler draw-in + soft pulse on "today" marker ---- */
+.ruler__fill{ animation-duration: 1.3s; animation-timing-function: var(--ease-grace); }
+@keyframes todayPulse{
+  0%,100%{ box-shadow:0 0 0 0 rgba(242,193,78,.55); }
+  50%{ box-shadow:0 0 0 6px rgba(242,193,78,0); }
+}
+.ruler__today{ animation: todayPulse 2.4s ease-in-out 1.3s infinite; border-radius:2px; }
+.ruler__mark{ transition: transform .25s var(--ease-pop); }
+.ruler__mark:hover{ transform: translate(-50%,-50%) scale(1.5); }
+
+/* ---- binder tabs: smoother slide + underline glow on the active edge ---- */
+.binder-tab{ transition: background-color .25s var(--ease-soft), color .25s var(--ease-soft), border-color .3s var(--ease-soft), transform .3s var(--ease-grace); }
+.binder-tab:hover{ transform: translateX(4px); }
+.binder-tab.is-active svg{ filter: drop-shadow(0 0 4px rgba(255,255,255,.5)); }
+.binder-tab svg{ transition: transform .3s var(--ease-pop); }
+.binder-tab:hover svg{ transform: scale(1.12); }
+
+/* ---- buttons: graceful press + light sweep on primary CTA ---- */
+.btn-add{
+  position:relative; overflow:hidden;
+  transition: transform .25s var(--ease-pop), box-shadow .3s var(--ease-soft);
+}
+.btn-add::after{
+  content:''; position:absolute; inset:0; border-radius:inherit;
+  background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+  background-size:220% 100%; background-position:120% 0;
+  transition: background-position .7s var(--ease-grace);
+  pointer-events:none;
+}
+.btn-add:hover::after{ background-position:-20% 0; }
+.btn-add:hover{ transform: translateY(-2px); }
+.btn-add:active{ transform: translateY(0) scale(.97); }
+
+.btn-ghost{ transition: border-color .3s var(--ease-soft), color .3s var(--ease-soft), transform .2s var(--ease-pop); }
+.btn-ghost:active{ transform: scale(.97); }
+
+/* ---- icon buttons: small character on hover ---- */
+.icon-btn, .theme-toggle{ transition: border-color .25s var(--ease-soft), transform .3s var(--ease-pop), box-shadow .3s var(--ease-soft); }
+.icon-btn:hover{ transform: translateY(-2px) scale(1.04); box-shadow:0 8px 16px -10px rgba(0,0,0,.5); }
+#settings-btn svg{ transition: transform .5s var(--ease-grace); }
+#settings-btn:hover svg{ transform: rotate(75deg); }
+@keyframes bellWiggle{
+  0%,100%{ transform: rotate(0); }
+  20%{ transform: rotate(-12deg); }
+  40%{ transform: rotate(10deg); }
+  60%{ transform: rotate(-6deg); }
+  80%{ transform: rotate(4deg); }
+}
+#reminder-btn:hover svg{ animation: bellWiggle .5s var(--ease-soft); transform-origin: top center; }
+.icon-btn__dot{ animation: todayPulse 2s ease-in-out infinite; }
+.theme-toggle svg{ transition: transform .45s var(--ease-grace), opacity .3s ease; }
+.theme-toggle:hover svg{ transform: rotate(25deg) scale(1.1); }
+
+/* ---- reminder panel + modals: softer scale-fade instead of a hard pop ---- */
+@keyframes panelIn{
+  from{ opacity:0; transform: translateY(-6px) scale(.97); }
+  to{ opacity:1; transform: translateY(0) scale(1); }
+}
+.reminder-panel:not([hidden]){ animation: panelIn .28s var(--ease-grace) both; }
+
+@keyframes overlayFade{ from{ opacity:0; } to{ opacity:1; } }
+.modal-overlay:not([hidden]){ animation: overlayFade .25s var(--ease-soft) both; }
+@keyframes modalIn{
+  from{ opacity:0; transform: translateY(10px) scale(.96); }
+  to{ opacity:1; transform: translateY(0) scale(1); }
+}
+.modal{ animation-name: modalIn; animation-duration:.35s; animation-timing-function: var(--ease-grace); }
+.modal__close{ transition: transform .3s var(--ease-pop), border-color .25s var(--ease-soft), color .25s var(--ease-soft); }
+.modal__close:hover{ transform: rotate(90deg); }
+
+/* ---- form fields: a touch of lift on focus ---- */
+.field input:focus, .field select:focus, .modal .field textarea:focus{
+  transform: translateY(-1px);
+}
+
+/* ---- color swatches: gentle bounce when picked ---- */
+.color-swatch span{ transition: transform .3s var(--ease-pop), box-shadow .25s var(--ease-soft); }
+.color-swatch input:checked + span{ transform: scale(1.12); }
+
+/* ---- homework: softer checkbox confirmation ---- */
+@keyframes checkPop{
+  0%{ transform: scale(.6); opacity:0; }
+  60%{ transform: scale(1.15); opacity:1; }
+  100%{ transform: scale(1); }
+}
+.hw-done-toggle:checked ~ .hw-check::after{ animation: checkPop .35s var(--ease-pop) both; }
+.hw-check{ transition: border-color .25s var(--ease-soft), background-color .25s var(--ease-soft), transform .25s var(--ease-pop); }
+.hw-done-toggle:checked ~ .hw-check{ transform: scale(1.05); }
+.hw-item{ transition: opacity .3s var(--ease-soft), transform .3s var(--ease-grace), box-shadow .3s var(--ease-soft); }
+.hw-item:hover{ transform: translateX(2px); box-shadow:0 6px 16px -12px rgba(0,0,0,.5); }
+.hw-delete{ transition: background-color .25s var(--ease-soft), color .25s var(--ease-soft), border-color .25s var(--ease-soft), transform .25s var(--ease-pop); }
+.hw-delete:hover{ transform: rotate(90deg); }
+
+/* ---- filter chips: gentle settle instead of an instant color swap ---- */
+.filter-chip{ transition: all .3s var(--ease-grace); }
+.filter-radio:checked + .filter-chip{ transform: translateY(-1px); box-shadow:0 6px 14px -8px rgba(242,193,78,.5); }
+
+/* ---- priority chips: same graceful settle ---- */
+.priority-chip{ transition: all .3s var(--ease-grace); }
+.priority-radio:checked + .priority-chip{ transform: translateY(-1px) scale(1.02); }
+
+/* ---- toasts: softer entrance with a light bounce, calmer exit ---- */
+@keyframes toastIn{
+  from{ opacity:0; transform: translateX(24px) scale(.95); }
+  to{ opacity:1; transform: translateX(0) scale(1); }
+}
+@keyframes toastOut{
+  from{ opacity:1; transform: translateX(0) scale(1); max-height:60px; }
+  to{ opacity:0; transform: translateX(16px) scale(.96); max-height:0; margin:0; padding-top:0; padding-bottom:0; }
+}
+.toast{ animation-name: toastIn; animation-duration:.4s; animation-timing-function: var(--ease-grace); }
+.toast.is-leaving{ animation: toastOut .3s var(--ease-soft) forwards; }
+
+/* ---- calendar events: soft lift ---- */
+.cal-event{ transition: transform .2s var(--ease-pop), box-shadow .2s var(--ease-soft); }
+.cal-event:hover{ transform: translateX(2px) scale(1.02); box-shadow:0 6px 14px -10px rgba(0,0,0,.5); }
+.cal-day{ transition: border-color .3s var(--ease-soft), box-shadow .3s var(--ease-soft), transform .3s var(--ease-grace); }
+.cal-day:hover{ transform: translateY(-2px); }
+
+/* ---- grade pills: quiet shimmer on hover, not a jump ---- */
+.grade-pill{ transition: transform .25s var(--ease-pop), box-shadow .25s var(--ease-soft); display:inline-block; }
+.grade-pill:hover{ transform: translateY(-1px) scale(1.04); box-shadow:0 4px 10px -6px var(--accent, var(--blue)); }
+.grades-row{ transition: transform .25s var(--ease-grace), box-shadow .25s var(--ease-soft), background-color .25s var(--ease-soft); }
+.grades-row:not(.grades-row--head):hover{ transform: translateX(2px); box-shadow:0 6px 16px -12px rgba(0,0,0,.45); }
+
+/* ---- headings: quiet underline draw-in for section headings on view ---- */
+.section-heading{ position:relative; display:inline-block; }
+.section-heading::after{
+  content:''; position:absolute; left:0; bottom:-4px; height:2px; width:0;
+  background:linear-gradient(90deg, var(--yellow), transparent);
+  animation: underlineDraw .8s var(--ease-grace) .3s both;
+}
+@keyframes underlineDraw{ to{ width:60%; } }
+
+/* respect reduced motion for every addition above too */
+@media (prefers-reduced-motion: reduce){
+  .ruler__today, .icon-btn__dot, .btn-add::after, .progress-chalk__bar{ animation:none !important; }
+  .stat-card:hover, .course-card:hover, .hw-item:hover, .cal-day:hover, .grades-row:hover,
+  .binder-tab:hover, .icon-btn:hover, .cal-event:hover, .grade-pill:hover{ transform:none !important; }
+}
+
+/* =========================================================
+   LIGHT THEME — proper re-tune, not just an inverted dark mode.
+   Soft lavender-white paper tone with a pastel aurora wash
+   (pink / purple / blue) behind everything, calmer accent
+   saturation so text stays readable, and lighter, closer
+   shadows instead of the dark theme's deep ones.
+   ========================================================= */
+:root[data-theme="light"] body{
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(213,72,143,.14), transparent 42%),
+    radial-gradient(circle at 85% 25%, rgba(124,58,237,.12), transparent 45%),
+    radial-gradient(circle at 50% 95%, rgba(76,111,224,.12), transparent 45%);
+  background-size: 200% 200%;
+  background-attachment: fixed;
+  animation: auroraDrift 26s ease-in-out infinite alternate;
+}
+:root[data-theme="light"] .stat-card,
+:root[data-theme="light"] .course-card,
+:root[data-theme="light"] .hw-item,
+:root[data-theme="light"] .grades-row:not(.grades-row--head),
+:root[data-theme="light"] .week-item,
+:root[data-theme="light"] .cal-day,
+:root[data-theme="light"] .toast{
+  box-shadow: 0 1px 2px rgba(60,40,100,.05), 0 1px 3px rgba(60,40,100,.05);
+}
+:root[data-theme="light"] .stat-card:hover,
+:root[data-theme="light"] .course-card:hover{
+  box-shadow: 0 16px 30px -16px rgba(60,40,100,.22);
+}
+:root[data-theme="light"] .hw-item:hover,
+:root[data-theme="light"] .grades-row:hover,
+:root[data-theme="light"] .cal-day:hover{
+  box-shadow: 0 8px 18px -12px rgba(60,40,100,.2);
+}
+:root[data-theme="light"] .ruler__fill{
+  background-image: linear-gradient(90deg, var(--purple), var(--pink));
+}
+:root[data-theme="light"] .btn-add{
+  box-shadow: 0 8px 20px -9px rgba(124,58,237,.45);
+}
+:root[data-theme="light"] .modal, :root[data-theme="light"] .reminder-panel{
+  box-shadow: 0 18px 40px -18px rgba(60,40,100,.3);
+}
+:root[data-theme="light"] ::-webkit-scrollbar-thumb{ background:#E1D6F5; }
+
+/* =========================================================
+   SPARKLE / SHINE / LIGHTNING — runs in BOTH themes, just
+   re-tinted: dark gets bright starfield dust + white shine,
+   light gets soft brand-colored sparkle + a faint tinted
+   shine so it reads as glints on paper instead of noise.
+   All decorative pseudo-elements — no HTML changes needed —
+   and every bit of it is inert the moment reduced-motion
+   is requested.
+   ========================================================= */
+:root[data-theme="dark"] body{
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(236,95,167,.30), transparent 42%),
+    radial-gradient(circle at 85% 25%, rgba(155,107,255,.32), transparent 45%),
+    radial-gradient(circle at 50% 95%, rgba(56,150,248,.26), transparent 45%);
+  background-size: 200% 200%;
+  background-attachment: fixed;
+  animation: auroraDrift 26s ease-in-out infinite alternate;
+}
+@keyframes auroraDrift{
+  0%{ background-position: 0% 0%, 100% 0%, 50% 100%; }
+  100%{ background-position: 18% 26%, 78% 18%, 42% 82%; }
+}
+
+.glitter-layer{
+  position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
+}
+.glitter-layer::before, .glitter-layer::after{
+  content:''; position:absolute; top:0; left:0; width:2px; height:2px; border-radius:50%;
+  box-shadow:
+    663px 308px var(--chalk), 808px 98px var(--chalk), 148px 1097px var(--chalk),
+    192px 748px var(--chalk), 1193px 118px var(--chalk), 1863px 1039px var(--chalk),
+    439px 76px var(--chalk), 176px 888px var(--chalk), 856px 143px var(--chalk),
+    492px 185px var(--chalk), 1128px 869px var(--chalk), 121px 1158px var(--chalk),
+    253px 457px var(--chalk), 1291px 1193px var(--chalk), 126px 1181px var(--chalk),
+    1199px 812px var(--chalk), 101px 452px var(--chalk), 95px 1140px var(--chalk),
+    1758px 272px var(--chalk), 593px 858px var(--chalk), 295px 1107px var(--chalk),
+    241px 1169px var(--chalk), 631px 1147px var(--chalk), 1671px 370px var(--chalk),
+    211px 1191px var(--chalk), 1169px 384px var(--chalk), 762px 199px var(--chalk),
+    1121px 128px var(--chalk), 1155px 122px var(--chalk), 1267px 421px var(--chalk),
+    1016px 1088px var(--chalk), 875px 643px var(--chalk), 953px 1199px var(--chalk),
+    1891px 928px var(--chalk), 740px 613px var(--chalk), 508px 368px var(--chalk),
+    1431px 499px var(--chalk), 167px 1176px var(--chalk), 614px 1075px var(--chalk),
+    1013px 703px var(--chalk), 1493px 919px var(--chalk), 589px 149px var(--chalk),
+    241px 1048px var(--chalk), 856px 337px var(--chalk), 1550px 700px var(--chalk),
+    311px 1001px var(--chalk), 863px 80px var(--chalk), 1368px 158px var(--chalk),
+    1565px 1142px var(--chalk), 1173px 642px var(--chalk), 696px 717px var(--chalk),
+    1217px 1017px var(--chalk), 1187px 934px var(--chalk), 140px 191px var(--chalk),
+    552px 970px var(--chalk);
+  opacity:.35;
+  animation: twinkleSmall 4.5s ease-in-out infinite;
+}
+.glitter-layer::after{
+  width:3px; height:3px;
+  box-shadow:
+    1427px 133px var(--yellow), 124px 634px var(--blue), 1325px 1183px var(--yellow),
+    1395px 912px var(--pink), 582px 790px var(--yellow), 1816px 710px var(--blue),
+    46px 945px var(--yellow), 727px 344px var(--green), 1251px 239px var(--yellow),
+    1011px 120px var(--blue), 446px 588px var(--yellow), 264px 507px var(--pink),
+    814px 800px var(--yellow), 1877px 1016px var(--blue), 165px 340px var(--yellow),
+    919px 822px var(--green), 1125px 569px var(--yellow), 1809px 280px var(--blue);
+  opacity:.45;
+  animation: twinkleBig 3.2s ease-in-out infinite .6s;
+  filter: blur(.3px);
+}
+@keyframes twinkleSmall{
+  0%,100%{ opacity:.15; }
+  50%{ opacity:.6; }
+}
+@keyframes twinkleBig{
+  0%,100%{ opacity:.2; transform:scale(1); }
+  50%{ opacity:.85; transform:scale(1.4); }
+}
+
+/* light theme: same dust field, just softer + brand-tinted so it
+   reads as a gentle sparkle on paper instead of dark noise on white */
+:root[data-theme="light"] .glitter-layer::before{
+  opacity:.14;
+}
+:root[data-theme="light"] .glitter-layer::after{
+  opacity:.55; filter: saturate(1.4) blur(.2px);
+}
+
+/* rotating glow ring behind the "SD" logo badge, and the badge
+   itself recolored to the aurora brand gradient in both themes */
+aside .bg-yellow{
+  position:relative; z-index:1;
+  background: var(--grad-brand) !important;
+  color:#fff !important;
+  box-shadow: 0 6px 16px -6px rgba(155,107,255,.55);
+}
+:root[data-theme="dark"] aside .bg-yellow::before{
+  content:''; position:absolute; inset:-6px; border-radius:inherit; z-index:-1;
+  background: conic-gradient(from 0deg, var(--yellow), var(--pink), var(--blue), var(--green), var(--yellow));
+  filter: blur(7px); opacity:.55;
+  animation: spinGlow 5s linear infinite;
+}
+:root[data-theme="light"] aside .bg-yellow::before{
+  content:''; position:absolute; inset:-5px; border-radius:inherit; z-index:-1;
+  background: conic-gradient(from 0deg, var(--purple), var(--pink), var(--blue), var(--purple));
+  filter: blur(6px); opacity:.4;
+  animation: spinGlow 5s linear infinite;
+}
+@keyframes spinGlow{ to{ transform: rotate(360deg); } }
+
+/* soft periodic light-sweep shine across key cards + buttons */
+:root[data-theme="dark"] .stat-card::after,
+:root[data-theme="dark"] .course-card::after{
+  content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:linear-gradient(115deg, transparent 40%, rgba(255,255,255,.06) 50%, transparent 60%);
+  background-size:250% 250%; background-position:150% 150%;
+  animation: cardShine 7s ease-in-out infinite;
+}
+:root[data-theme="light"] .stat-card::after,
+:root[data-theme="light"] .course-card::after{
+  content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:linear-gradient(115deg, transparent 40%, rgba(124,58,237,.10) 50%, transparent 60%);
+  background-size:250% 250%; background-position:150% 150%;
+  animation: cardShine 7s ease-in-out infinite;
+}
+.stat-card, .course-card{ position:relative; overflow:hidden; }
+:root .stat-card:nth-of-type(2)::after{ animation-delay:.8s; }
+:root .stat-card:nth-of-type(3)::after{ animation-delay:1.6s; }
+:root .stat-card:nth-of-type(4)::after{ animation-delay:2.4s; }
+@keyframes cardShine{
+  0%, 92%, 100%{ background-position:150% 150%; }
+  96%{ background-position:-50% -50%; }
+}
+
+/* a lightning bolt that flickers by the header greeting */
+:root[data-theme="dark"] header h1.font-hand::after{
+  content:'⚡'; display:inline-block; margin-left:6px; font-family:initial; font-size:.62em;
+  color:var(--yellow); text-shadow:0 0 10px rgba(242,193,78,.75), 0 0 22px rgba(242,193,78,.4);
+  animation: boltFlicker 6s ease-in-out infinite;
+}
+:root[data-theme="light"] header h1.font-hand::after{
+  content:'⚡'; display:inline-block; margin-left:6px; font-family:initial; font-size:.62em;
+  color:var(--purple); text-shadow:0 0 8px rgba(124,58,237,.5), 0 0 16px rgba(124,58,237,.25);
+  animation: boltFlicker 6s ease-in-out infinite;
+}
+@keyframes boltFlicker{
+  0%, 88%, 100%{ opacity:0; transform: scale(.8) rotate(-6deg); }
+  90%{ opacity:1; transform: scale(1.15) rotate(4deg); }
+  92%{ opacity:.3; transform: scale(.95) rotate(-2deg); }
+  94%{ opacity:1; transform: scale(1.1) rotate(3deg); }
+  96%{ opacity:0; transform: scale(.9) rotate(0); }
+}
+
+/* rare, subtle full-width lightning flash across the header —
+   very low opacity, quick, and long-spaced so it reads as a
+   glint rather than a strobe. Dark theme uses a screen-blend
+   white streak; light theme swaps to a multiply-blend violet
+   streak so it stays visible against a pale background. */
+:root[data-theme="dark"] .lightning-flash{
+  background:linear-gradient(100deg, transparent 30%, rgba(255,255,255,.05) 48%, rgba(255,255,255,.09) 50%, rgba(255,255,255,.05) 52%, transparent 70%);
+  mix-blend-mode:screen;
+}
+:root[data-theme="light"] .lightning-flash{
+  background:linear-gradient(100deg, transparent 30%, rgba(124,58,237,.07) 48%, rgba(124,58,237,.12) 50%, rgba(124,58,237,.07) 52%, transparent 70%);
+  mix-blend-mode:multiply;
+}
+.lightning-flash{
+  position:fixed; inset:0; pointer-events:none; z-index:45;
+  opacity:0;
+  animation: skyFlash 11s ease-in-out infinite;
+}
+@keyframes skyFlash{
+  0%, 96%, 100%{ opacity:0; }
+  97%{ opacity:1; }
+  97.6%{ opacity:.2; }
+  98.2%{ opacity:.9; }
+  99%{ opacity:0; }
+}
+
+/* dark-theme accent glow on primary actions, echoing the sparkle */
+:root[data-theme="dark"] .btn-add{
+  box-shadow: 0 8px 20px -8px rgba(155,107,255,.45), 0 0 0 1px rgba(236,95,167,.2) inset;
+}
+:root[data-theme="dark"] .btn-add:hover{
+  box-shadow: 0 10px 26px -8px rgba(155,107,255,.65), 0 0 0 1px rgba(236,95,167,.3) inset;
+}
+:root[data-theme="dark"] .icon-btn:hover, :root[data-theme="dark"] .theme-toggle:hover{
+  box-shadow: 0 8px 18px -10px rgba(155,107,255,.55);
+}
+:root[data-theme="dark"] .ruler__today{
+  box-shadow: 0 0 8px 2px rgba(155,107,255,.6);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .glitter-layer, .lightning-flash{ display:none !important; }
+  body{ animation:none !important; }
+  :root aside .bg-yellow::before,
+  :root .stat-card::after,
+  :root .course-card::after,
+  :root header h1.font-hand::after{ animation:none !important; opacity:0 !important; }
 }

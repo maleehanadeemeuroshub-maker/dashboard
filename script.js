@@ -83,9 +83,18 @@ const importInput    = document.getElementById('import-input');
 const resetBtn       = document.getElementById('reset-btn');
 
 // ---- persistence ----
+// Theme starts on "auto": we follow the visitor's OS/browser preference
+// (light unless their system is explicitly set to dark) until they tap
+// the toggle themselves — at that point their choice is saved and wins
+// over the system setting from then on.
+function systemPrefersDark() {
+  return typeof window.matchMedia === 'function'
+    && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
 function defaultState() {
   return {
-    theme: 'dark',
+    theme: systemPrefersDark() ? 'dark' : 'light',
     tasks: { added: [], done: [], deleted: [], nextId: 6 },
     courses: JSON.parse(JSON.stringify(DEFAULT_COURSES)),
   };
@@ -98,7 +107,7 @@ function loadState() {
     const parsed = JSON.parse(raw);
     const base = defaultState();
     return {
-      theme: parsed.theme === 'light' ? 'light' : 'dark',
+      theme: (parsed.theme === 'light' || parsed.theme === 'dark') ? parsed.theme : base.theme,
       tasks: {
         added: Array.isArray(parsed.tasks?.added) ? parsed.tasks.added : [],
         done: Array.isArray(parsed.tasks?.done) ? parsed.tasks.done : [],
