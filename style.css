@@ -7,6 +7,29 @@
 }
 html,body{ background:var(--board); color:var(--chalk); }
 body{ font-family:'Inter',sans-serif; }
+
+/* =========================================================
+   SHELL LAYOUT — hard CSS fallback.
+   These rules duplicate what the Tailwind utility classes on
+   #app-shell / #app-sidebar / #app-main already do, but as
+   plain, always-available CSS rather than classes generated
+   by the Tailwind CDN's runtime JIT. If that script is ever
+   slow, blocked, or misses an arbitrary-value class, the app
+   still lays out correctly full-bleed instead of shrink-wrapping
+   to content width with blank space on the side.
+   ========================================================= */
+html, body{ width:100%; }
+#app-shell{
+  display:flex; flex-direction:column; width:100%; min-height:100vh;
+}
+#app-main{
+  display:flex; flex-direction:column; width:100%; min-width:0; flex:1 1 0%;
+}
+@media (min-width:1024px){
+  #app-shell{ flex-direction:row; }
+  #app-sidebar{ width:220px; flex:0 0 220px; }
+  #app-main{ width:auto; }
+}
 .font-display{ font-family:'Baloo 2',sans-serif; }
 .font-hand{ font-family:'Caveat',cursive; }
 .font-mono{ font-family:'JetBrains Mono',monospace; }
@@ -356,7 +379,8 @@ ul{ list-style:none; margin:0; padding:0; }
 /* =========================================================
    TOASTS
    ========================================================= */
-.toast-wrap{ position:fixed; bottom:18px; right:18px; display:flex; flex-direction:column; gap:8px; z-index:70; max-width:280px; }
+.toast-wrap{ position:fixed; bottom:18px; right:18px; left:18px; display:flex; flex-direction:column; align-items:flex-end; gap:8px; z-index:70; }
+.toast{ max-width:min(280px, 100%); }
 .toast{
   background:var(--board2); border:1px solid var(--board3); border-left:4px solid var(--green);
   padding:10px 14px; border-radius:6px; font-size:12.5px; box-shadow:0 12px 26px -12px rgba(0,0,0,.5);
@@ -396,7 +420,7 @@ ul{ list-style:none; margin:0; padding:0; }
 }
 .grades-row--editing .grade-static{ display:none; }
 .grades-row:not(.grades-row--editing) .grade-editing{ display:none; }
-.grade-edit-fields{ display:flex; gap:6px; align-items:center; }
+.grade-edit-fields{ display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
 .grade-edit-fields span{ color:var(--chalkdim); font-size:12px; }
 
 /* =========================================================
